@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Estatísticas FURIA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            background-image: url("/static/images/img2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #ff5500;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .form-container {
+            background-color: rgba(20, 20, 20, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+            border: 1px solid #444;
+            font-size: 1rem;
+        }
+
+        input::placeholder {
+            color: #ccc;
+        }
+
+        button, a {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #ff5500;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover, a:hover {
+            background-color: #e04b00;
+        }
+
+        a {
+            text-align: center;
+        }
+
+        .btn-voltar {
+            background-color: #555;
+            margin-top: 10px;
+        }
+
+        .btn-voltar:hover {
+            background-color: #444;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Estatísticas da FURIA</h2>
+
+    <div class="form-container">
+        <label for="world_rank">Ranking Mundial:</label>
+        <input type="text" id="world_rank" placeholder="ex: #13">
+
+        <label for="valve_rank">Ranking Valve:</label>
+        <input type="text" id="valve_rank" placeholder="ex: #10">
+
+        <label for="win_rate">Win Rate:</label>
+        <input type="text" id="win_rate" placeholder="ex: 55%">
+
+        <button onclick="salvar()">Salvar</button>
+        <a href="https://www.hltv.org/team/8297/furia#tab-matchesBox" target="_blank">Ver HLTV</a>
+        <button class="btn-voltar" onclick="window.history.back()">Voltar</button>
+    </div>
+
+    <script>
+        function salvar() {
+            const dados = new FormData();
+            dados.append("ranking_world", document.getElementById("world_rank").value);
+            dados.append("ranking_valve", document.getElementById("valve_rank").value);
+            dados.append("win_rate", document.getElementById("win_rate").value);
+
+            fetch('/estatisticas', {
+                method: 'POST',
+                body: dados
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Estatísticas salvas com sucesso!");
+                    location.reload();
+                } else {
+                    alert("Erro ao salvar estatísticas.");
+                }
+            })
+            .catch(() => alert("Erro na comunicação com o servidor."));
+        }
+    </script>
+</body>
+</html>

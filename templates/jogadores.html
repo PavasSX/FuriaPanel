@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogadores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="dashboard-jogadores">
+        <h1>👥 Jogadores</h1>
+        
+        <div class="dashboard-content">
+            <div class="sidebar">
+                <a href="/" class="sidebar-btn">⬅️ Voltar ao Início</a>
+                <a href="#formulario" class="sidebar-btn">➕ Novo Jogador</a>
+            </div>
+
+            <div class="sem-fundo">
+                <form method="POST" id="formulario">
+                    <h2>➕ Adicionar Novo Jogador</h2>
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Bio</th>
+                            <th>Foto (URL)</th>
+                            <th>Instagram</th>
+                            <th>Twitch</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="nome" required></td>
+                            <td><textarea name="bio" rows="4" required></textarea></td>
+                            <td><input type="text" name="foto" required></td>
+                            <td>
+                                <input type="text" name="instagram_nome" placeholder="Nome" required class="metade">
+                                <input type="text" name="instagram_url" placeholder="URL" required class="metade">
+                            </td>
+                            <td>
+                                <input type="text" name="twitch_nome" placeholder="Nome" required class="metade">
+                                <input type="text" name="twitch_url" placeholder="URL" required class="metade">
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit">💾 Salvar</button>
+                </form>
+
+                <br>
+
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul>
+                      {% for message in messages %}
+                        <li>{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+
+                <div class="jogadores-lista">
+                    {% for jogador in jogadores %}
+                        <div class="jogador-container">
+                            <h2>{{ jogador.nome }}</h2>
+                            <img src="{{ jogador.foto }}" alt="{{ jogador.nome }}" class="foto-jogador">
+                            <p>{{ jogador.bio }}</p>
+                            <p><a href="{{ jogador.instagram }}">Instagram</a></p>
+                            <p><a href="{{ jogador.twitch }}">Twitch</a></p>
+                            <div class="acoes">
+                                <a href="{{ url_for('editar_jogador', nome=jogador.nome) }}">Editar</a>
+                                <a href="{{ url_for('excluir_jogador', nome=jogador.nome) }}">Excluir</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

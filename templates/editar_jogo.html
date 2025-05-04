@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Jogo</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="jogo-container">
+        <h1>📝 Editar Jogo</h1>
+
+        <form method="POST">
+            <label for="descricao">Descrição do Jogo</label>
+            <textarea name="descricao" id="descricao" rows="4">{{ jogo['descricao'] }}</textarea><br>
+            
+            <label for="link">Link do Jogo (ex: Twitch ou YouTube)</label>
+            <input type="text" name="link" id="link" value="{{ jogo['link'] }}"><br>
+            
+            <button type="submit">💾 Salvar Alterações</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{{ url_for('jogos') }}" class="sidebar-btn">⬅️ Voltar para a lista de jogos</a>
+        </div>
+    </div>
+</body>
+</html>

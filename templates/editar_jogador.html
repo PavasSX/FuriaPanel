@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Jogador</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="sem-fundo">
+    <div class="dashboard-container">
+        <h1>Editar Jogador: {{ jogador['nome'] }}</h1>
+
+        <form method="POST" id="formulario">
+            <h2>Dados do Jogador</h2>
+
+            <table>
+                <tr>
+                    <th><label for="bio">Biografia</label></th>
+                    <td><textarea id="bio" name="bio" rows="4">{{ jogador['bio'] }}</textarea></td>
+                </tr>
+                <tr>
+                    <th><label for="foto">Foto (URL)</label></th>
+                    <td><input type="text" id="foto" name="foto" value="{{ jogador['foto'] }}"></td>
+                </tr>
+                <tr>
+                    <th><label for="instagram">Redes Sociais</label></th>
+                    <td>
+                        <input type="text" id="instagram" name="instagram" value="{{ jogador['instagram'] }}" class="metade">
+                        <input type="text" id="twitch" name="twitch" value="{{ jogador['twitch'] }}" class="metade" placeholder="Twitch">
+                    </td>
+                </tr>
+            </table>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{{ url_for('jogadores') }}" class="sidebar-btn">← Voltar para a lista de jogadores</a>
+        </div>
+    </div>
+</body>
+</html>

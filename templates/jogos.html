@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Jogos</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="jogo-container">
+        <h1>📅 Próximos Jogos</h1>
+        <form method="POST">
+            <label for="descricao">Descrição do Jogo</label>
+            <textarea name="descricao" id="descricao" rows="4"></textarea><br>
+            
+            <label for="link">Link do Jogo (ex: Twitch ou YouTube)</label>
+            <input type="text" name="link" id="link" placeholder="Cole o link aqui"><br>
+            
+            <button type="submit">💾 Salvar</button>
+        </form>
+        
+        <div class="lista-jogos">
+            <h2>Jogos Salvos</h2>
+            <ul>
+                {% for jogo in jogos %}
+                    <li>
+                        <span>{{ jogo['descricao'] }}</span>
+                        <a href="{{ jogo['link'] }}" target="_blank">Assistir</a>
+                        <a href="{{ url_for('editar_jogo', id=loop.index0) }}" class="editar-btn">📝 Editar</a>
+                        <a href="{{ url_for('excluir_jogo', id=loop.index0) }}" class="excluir-btn">❌ Excluir</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/" class="sidebar-btn">⬅️ Voltar ao Início</a>
+        </div>
+    </div>
+</body>
+</html>
