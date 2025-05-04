@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel FURIA</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>🔥 Furia Fan Bot Dashboard 🔥</h1>
+        
+        <div class="dashboard-content">
+
+            <div class="sidebar">
+                <button class="sidebar-btn active" data-section="home">🏠 Início</button>
+                <button class="sidebar-btn" data-section="mensagens">💬 Gerenciar Mensagens</button>
+                <button class="sidebar-btn" data-section="jogadores">👥 Gerenciar Jogadores</button>
+                <button class="sidebar-btn" data-section="jogos">📅 Gerenciar Jogos</button>
+                <button class="sidebar-btn" data-section="estatisticas">📊 Estatísticas</button>
+            </div>
+            
+            <div class="content-area">
+                
+                <div id="home" class="content-section">
+                    <h1>Bem-vindo ao Painel de Controle!</h1>
+                    <h2>Escolha uma opção no menu à esquerda para começar.</h2>
+                </div>
+                
+                <div id="mensagens" class="content-section" style="display:none;">
+                    <h1>Gerenciar Mensagens</h1>
+                    <p>Aqui você pode editar e gerenciar as mensagens.</p>
+                    <a href="{{ url_for('mensagens') }}">Ir para Gerenciar Mensagens</a>
+                </div>
+                
+                <div id="jogadores" class="content-section" style="display:none;">
+                    <h1>Gerenciar Jogadores</h1>
+                    <p>Aqui você pode editar e gerenciar os jogadores.</p>
+                    <a href="{{ url_for('jogadores') }}" class="link-button">Ir para Gerenciar Jogadores</a>
+                </div>
+                
+                <div id="jogos" class="content-section" style="display:none;">
+                    <h1>Gerenciar Jogos</h1>
+                    <p>Aqui você pode gerenciar os jogos.</p>
+                    <a href="{{ url_for('jogos') }}" class="link-button">Ir para Gerenciar Jogos</a>
+                </div>
+
+                <div id="estatisticas" class="content-section" style="display:none;">
+                    <h1>Estatísticas</h1>
+                    <p>Visualize ou edite os rankings e win rate do time.</p>
+                    <a href="{{ url_for('editar_estatisticas') }}" class="link-button">Ir para Estatísticas</a>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.sidebar-btn');
+            const sections = document.querySelectorAll('.content-section');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    
+                    sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    
+                    const sectionId = this.getAttribute('data-section');
+                    const sectionToDisplay = document.getElementById(sectionId);
+                    sectionToDisplay.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
