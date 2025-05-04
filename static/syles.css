@@ -1,0 +1,402 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    background-image: url("/static/images/img2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff5500;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.dashboard-jogadores {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.dashboard-content {
+    display: flex;
+    min-height: 70vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-btn {
+    background-color: #ff5500;
+    color: white;
+    border: none;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-btn:hover {
+    background-color: #e04b00;
+    transform: translateX(5px);
+}
+
+.sidebar-btn.active {
+    background-color: #e04b00;
+    box-shadow: 0 0 10px rgba(255, 85, 0, 0.5);
+}
+
+.sidebar-btn::before {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.content-area {
+    flex: 1;
+    background-color: #1d1b1b;
+    background-image: url("/static/images/img4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
+
+.content-area .text-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);  
+}
+
+.content-section {
+    text-align: center;  
+}
+
+.content-section h1,
+.content-section h2 {
+    margin: 0;  
+    padding: 0;  
+}
+
+.content-section h2 {
+    margin-top: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .dashboard-content {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .sidebar-btn {
+        width: 48%;
+        margin-bottom: 10px;
+    }
+}
+
+body.sem-fundo {
+    background-image: none !important;
+    background-color: #121212;
+}
+
+@media (max-width: 480px) {
+    .sidebar-btn {
+        width: 100%;
+    }
+    
+    .dashboard-container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+.jogadores-lista {
+    background-color: #ffffff;
+    border-radius: 5px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.jogador-container {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.jogador-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.jogador-container img {
+    width: 100%; 
+    max-width: 150px; 
+    margin-bottom: 10px;
+}
+
+.jogador-container .acoes a {
+    color: #ff5500; 
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.jogador-container .acoes a:hover {
+    text-decoration: underline;
+}
+
+#formulario {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto; 
+}
+
+#formulario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #ff5500; 
+}
+
+#formulario table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#formulario th,
+#formulario td {
+    padding: 10px;
+    text-align: left;
+}
+
+#formulario th {
+    background-color: #444;
+    color: #fff;
+}
+
+#formulario td input,
+#formulario td textarea {
+    width: 100%; 
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+}
+
+#formulario button {
+    background-color: #ff5500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%; 
+}
+
+#formulario button:hover {
+    background-color: #e04b00;
+}
+
+
+#formulario td input[type="text"] {
+    margin-right: 10px; 
+}
+
+#formulario td input[type="text"]:nth-child(2) {
+    margin-right: 0; 
+}
+
+#formulario td input[type="text"]:focus,
+#formulario td textarea:focus {
+    outline: none;
+    border-color: #ff5500;
+}
+
+.metade {
+    width: calc(50% - 10px);
+    display: inline-block;
+    margin-right: 10px;
+}
+.metade:last-child {
+    margin-right: 0;
+}
+
+.jogo-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #3a3939;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.jogo-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.jogo-container h2 {
+    
+    color: #000000;
+    
+}
+
+.jogo-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.jogo-container label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #000000;
+}
+
+.jogo-container input[type="text"],
+.jogo-container textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.jogo-container button[type="submit"] {
+    background-color: #ff5500;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.jogo-container button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.jogo-container .lista-jogos {
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+
+.jogo-container .lista-jogos ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.jogo-container .lista-jogos li {
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jogo-container .lista-jogos a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.jogo-container .lista-jogos a:hover {
+    text-decoration: underline;
+}
+
+.editar-btn, .excluir-btn {
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.editar-btn {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.editar-btn:hover {
+    background-color: #e0a800;
+}
+
+.excluir-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.excluir-btn:hover {
+    background-color: #c82333;
+}
