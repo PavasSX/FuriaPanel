@@ -175,4 +175,4 @@ def editar_estatisticas():
     return render_template("estatisticas.html", estatisticas=estatisticas)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=3000)
