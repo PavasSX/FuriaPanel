@@ -11,8 +11,9 @@ JOGADORES_CAMINHO = 'data/jogadores.json'
 JOGOS_CAMINHO = 'data/jogos.json'
 CAMINHO_ESTATISTICAS = 'data/estatisticas.json'
 
+
 # ==================== TOKEN DO BOT TELEGRAM ==================== #
-TOKEN = ("SEU TOKEN DO BOT TELEGRAM") 
+TOKEN = os.getenv("TOKEN_TG")
 
 # ==================== FUNÇÕES AUXILIARES ==================== #
 def carregar_usuarios():
